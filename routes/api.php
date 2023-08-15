@@ -51,7 +51,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/product/{id}', [ProductController::class, 'deleteProduct']);
     Route::get('/product/discontinue/{id}', [ProductController::class, 'discontinueProduct']);
     Route::get('/product/continue/{id}', [ProductController::class, 'continueProduct']);
+
+    // logout
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

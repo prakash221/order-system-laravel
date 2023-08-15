@@ -15,7 +15,7 @@ class OrderController extends Controller
         try {
             $orders = DB::table('orders')
                 ->join('customers', 'orders.customer_id', '=', 'customers.id')
-                ->select('orders.*', 'customers.name')
+                ->select('orders.*', 'customers.full_name')
                 ->paginate(12);
             return $this->success([
                 'orders' => $orders
@@ -35,7 +35,7 @@ class OrderController extends Controller
         try {
             $order = DB::table('orders')
                 ->join('customers', 'orders.customer_id', '=', 'customers.id')
-                ->select('orders.*', 'customers.name')
+                ->select('orders.*', 'customers.full_name')
                 ->where('orders.id', '=', $id)
                 ->first();
             return $this->success([
@@ -56,7 +56,7 @@ class OrderController extends Controller
         try {
             $orders = DB::table('orders')
                 ->join('customers', 'orders.customer_id', '=', 'customers.id')
-                ->select('orders.*', 'customers.name')
+                ->select('orders.*', 'customers.full_name')
                 ->where('orders.customer_id', '=', $id)
                 ->get();
             return $this->success([
